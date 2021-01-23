@@ -14,13 +14,14 @@ def insertion_sort(array, compare_fn):
         # break if j is less than 1 since we would index -1 in array
         while j >= 1 and compare_fn(result[j], result[j - 1]) < 0:
             result[j], result[j - 1] = result[j - 1], result[j]  # python swap expression
-            j -= 1 # decrease j
+            j -= 1  # decrease j
 
     return result
 
 
 def compare_fn(a1, a2):  # example of compare function - simple number comparison
-    if a1 == a2: return 0
+    if a1 == a2:
+        return 0
     return -1 if a1 < a2 else 1
 
 
