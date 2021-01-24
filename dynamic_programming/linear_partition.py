@@ -12,7 +12,7 @@ def linear_partition_problem(array: List[int], num_partitions: int) -> List[List
     array = [None] + array  # prepend so that we can index array from 1
     n, k = len(array), num_partitions
 
-    # Create n x k table where n is number of elements in array and k is number of partitions
+    # Create "n x k" table where n is number of elements in array and k is number of partitions
     # Table is (n + 1) x (k + 1) so that it is indexable from 1st element due to math formulas
     # Table is referenced as "M" - matrix
     # Column in the table corresponds to number of parts - index 1 represents a single partition ...
@@ -34,7 +34,7 @@ def linear_partition_problem(array: List[int], num_partitions: int) -> List[List
 
     # Now iterate for each row until the end
     # For each element calculate M(n, k) = min<1, n - 1>( max( M(i, k - 1), sum<j = i + 1, n> sj ) )
-    # Calculate minimum from maximums of either k - 1 partitions or sum of all elements from i + 1 to n
+    # Calculate minimum from maxima of either k - 1 partitions or sum of all elements from i + 1 to n
     for row in range(2, n):
         # Iterate for each column where k > 2 until k == num_partitions
         for col in range(2, k + 1):
