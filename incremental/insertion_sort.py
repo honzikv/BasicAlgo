@@ -1,6 +1,5 @@
 def insertion_sort(array, compare_fn):
     """
-
     :param array: array of numbers or comparable objects
     :param compare_fn: function that compares two objects - a1 and a2, a1 < a2 returns -1, a1 == a2 returns 0 and
                         a1 > a2 returns 1
