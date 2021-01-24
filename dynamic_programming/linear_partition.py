@@ -63,13 +63,14 @@ def linear_partition_problem(array: List[int], num_partitions: int) -> List[List
     # Create the result
     def recounstruct_partition(array, path, n, k):
         if k == 1:
-            return array[1:n]
+            return array[1:n + 1]  # array has extra None element
 
         else:
-            result = recounstruct_partition(array, path, path[n + 1][k], k - 1)
-            return result, array[path[n][k]:n]
+            result = recounstruct_partition(array, path, path[n][k], k - 1)
+            # results will be concatenated to a single list and separated by None elements
+            return result + [None] + array[path[n][k]:n]
 
-    return recounstruct_partition(array, path, len(array) - 2, num_partitions)
+    return recounstruct_partition(array, path, len(array) - 1, num_partitions)
 
 
-print(linear_partition_problem([100, 200, 300, 400, 500, 600, 700, 800, 900], 3))
+print(linear_partition_problem([100, 100, 100], 3))
