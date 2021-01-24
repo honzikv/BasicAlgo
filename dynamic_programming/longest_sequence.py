@@ -3,16 +3,20 @@
 # find a longest increasing subsequence
 # eg. (1, 2, 3, 5) or (21, 22, 23, 77)
 
-import math
-
-
 def longest_inc_subseq(array):
-    # create a "table" represented by an input array, subseq_lengths and previous_elements
-    subseq_lengths = [1 for _ in array]  # length of subsequence up until specific index
-    previous_elements = [-1 for _ in array]  # link to index of previous element in array
+    # To solve this a "table" is created which will contain length of subsequence up until the specific item in array
+    # E.g index 2 will specify length of the subsequence which contains item array[2]
+    # Additionally, an array that will store the subsequence itself is required - this can be implemented using links
+    # where each item of the array contains index to the previous one
+
+    # length of subsequence for each element in "array"
+    subseq_lengths = [1 for _ in array]  # initialize to 1, since each element is a subsequence with a length of 1
+
+    # link to previous elements in subsequence
+    previous_elements = [-1 for _ in array]  # this can be initialized to whatever, -1 for a non existent element
 
     if len(array) == 1 or len(array) == 0:
-        return array
+        return array  # return array itself if its empty or containing only one element
 
     for i in range(1, len(array)):
 
